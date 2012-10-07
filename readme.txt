@@ -38,6 +38,8 @@ google map API.
 * A change since the previous version.
 * Another change.
 
+== Upgrade Notice ==
+N/A
 == Arbitrary section ==
 N/A
 == A brief Markdown Example ==
