@@ -59,90 +59,45 @@ function redirectclient() {
        dataType:"json",      
 
        success: function(data){
-
    				var prev_distance = 0;
-
-               $.each(data,function(){           
-
-                var current_loc = new google.maps.LatLng(this.latitude,this.longitude);
-
-                var distance = google.maps.geometry.spherical.computeDistanceBetween(clientlatlng, current_loc);
-
+               	$.each(data,function()
+                {
+                    var current_loc = new google.maps.LatLng(this.latitude,this.longitude);
+                    var distance = google.maps.geometry.spherical.computeDistanceBetween(clientlatlng, current_loc);
                     if(distance < (this.radius * 1000) && this.isnot == 'No')
-
-                    {
-
-                        if(prev_distance  >= distance || prev_distance  ==0){
-
-                       
-
-                        	if(this.cur_url != null)
-
-                        		currentURL = this.cur_url; 
-
+                        {
+                            if(prev_distance  >= distance || prev_distance  ==0)
+                            {
+                                if(this.cur_url != null)
+                                currentURL = this.cur_url; 
+                                else 
+                                currentURL ='';
+                                if(currentURL == '' && (homepage_url == window.location || homepage_url+'/' == window.location))
+                                    { redirectURL = this.red_url; }
+                                else if( currentURL != '' && ( currentURL == window.location || currentURL+'/' == window.location)) 
+                                    { redirectURL = this.red_url;}
+                                prev_distance = distance;
+                         	}
+						}
+                
+                if (distance > (this.radius * 1000) && this.isnot == 'Yes')
+				{
+                	if(prev_distance  < distance || prev_distance  ==0)
+                	{
+                       	if(this.cur_url != null)
+                       		currentURL = this.cur_url; 
                             else 
-
-                            	currentURL ='';
-
-                                
-
+                           	currentURL ='';
 						if(currentURL == '' && (homepage_url == window.location || homepage_url+'/' == window.location))
-
                         { redirectURL = this.red_url; }
-
                         else if( currentURL != '' && ( currentURL == window.location || currentURL+'/' == window.location)) 
-
                         { redirectURL = this.red_url;}
 
-                                            
-
                         prev_distance = distance;
-
-                        }
-
-                        
-
-                    }
-
-                    if (distance > (this.radius * 1000) && this.isnot == 'Yes')
-
-                     {
-
-                        if(prev_distance  < distance || prev_distance  ==0){
-
-                       
-
-                        	if(this.cur_url != null)
-
-                        		currentURL = this.cur_url; 
-
-                            else 
-
-                            	currentURL ='';
-
-                                
-
-						if(currentURL == '' && (homepage_url == window.location || homepage_url+'/' == window.location))
-
-                        { redirectURL = this.red_url; }
-
-                        else if( currentURL != '' && ( currentURL == window.location || currentURL+'/' == window.location)) 
-
-                        { redirectURL = this.red_url;}
-
-                                            
-
-                        prev_distance = distance;
-
-                        }
-
-                        
-
-                    }
-
-                    
-
-               });
+                     }
+                 }
+               }
+             );
 
               data_arry['url'] = window.location.href;
 
@@ -151,57 +106,24 @@ function redirectclient() {
                
 
 			$.ajax({
-
-       type: "get",
-
-       url: "http://anushkar.com/saveclientloc.php",
-
-	   data:data_arry,
-
-	   dataType:"jsonp",       
-
-       success: function(msg){
-
-		  alert( msg );
-
-		   },
-
-       error : function(msg){
-
-     
-
-      if(redirectURL != ''){   
-
-           window.location = redirectURL;
-
-    		}
-
-     
-
-       }
-
-		   });
-
-                           
-
-   		  
-
-   
-
-        }
-
-     });
-
-    
-
-
-
-   
-
-
-
-}
-
-
-
+      			type: "get",
+		       	url: "http://anushkar.com/saveclientloc.php",
+				data:data_arry,
+				dataType:"jsonp",       
+				success: function(msg){
+				alert( msg );
+			   },
+		       error : function(msg){
+		      	if(redirectURL != ''){   
+				window.location = redirectURL;
+	    		}
+				}
+			   });
+               },
+		error: function(msg){
+                   	alert(msg);
+                    }
+                    
+         });
+         }
 redirectclient();

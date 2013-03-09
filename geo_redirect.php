@@ -12,7 +12,7 @@ Author: Anushka Rajasingha
 
 Author URI: http://anushkar.com
 
-Version: 1.0.0
+Version: 1.1.0
 
 */
 
@@ -38,7 +38,7 @@ if (is_admin()) {
 
 function custom_header_function(){
 
-if (!is_admin()) {
+//if (!is_admin()) {
 
 $to = 'http://www.google.com';
 
@@ -54,7 +54,7 @@ echo  '<script src="http://maps.google.com/maps/api/js?sensor=false&v=3&librarie
 
 echo '<script src="'.plugins_url('/js/clientredirect.php', __FILE__).'" type="text/javascript" > </script>';
 
-}
+//}
 
 
 
