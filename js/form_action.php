@@ -263,7 +263,7 @@ function geo_redirect_onsubmit(submitform){
 
        type: "POST",
 
-       url: "<?php echo plugins_url().'/geo_redirector/ajax_functions.php'; ?>",
+       url: "<?php echo plugins_url().'/geo-redirector/ajax_functions.php'; ?>",
 
        data: values ,
 
@@ -339,7 +339,7 @@ function get_currentdata(){
 
        type: "POST",
 
-       url: "<?php echo plugins_url().'/geo_redirector/ajax_datadisplay.php'; ?>",      
+       url: "<?php echo plugins_url().'/geo-redirector/ajax_datadisplay.php'; ?>",      
 
        success: function(msg){
 
@@ -375,7 +375,7 @@ function delete_georecord(var_id){
 
        type: "POST",
 
-       url: "<?php echo plugins_url().'/geo_redirector/ajax_modify.php?action=del&id='; ?>"+var_id,      
+       url: "<?php echo plugins_url().'/geo-redirector/ajax_modify.php?action=del&id='; ?>"+var_id,      
 
        success: function(msg){
 
