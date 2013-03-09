@@ -17,8 +17,8 @@ This is a WordPress plugin , this plugin will allow you to redirect your URLs ac
 == Installation ==
 
 1.Download the plugin compressed file.
-2.Unzip geo_redirector.zip file.
-3.Upload geo_redirector folder to the /wp-content/plugins/ directory.
+2.Unzip geo-redirector.zip file.
+3.Upload geo-redirector folder to the /wp-content/plugins/ directory.
 4.Activate the plugin through the 'Plugins' menu in WordPress.
 
 

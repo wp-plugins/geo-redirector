@@ -54,7 +54,7 @@ function redirectclient() {
 
        type: "POST",
 
-       url: "<?php echo plugins_url().'/geo_redirector/get_alllocations.php'; ?>",
+       url: "<?php echo plugins_url().'/geo-redirector/get_alllocations.php'; ?>",
 
        dataType:"json",      
 
